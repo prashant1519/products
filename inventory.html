@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 300px;
+        }
+
+        #con{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+        }
+
+    </style>
+</head>
+<body>
+    <div id="con"></div>
+</body>
+</html>
+<script>
+    var taken= JSON.parse(localStorage.getItem('data'));
+ 
+    taken.map(function(ele,index){
+        var div=document.createElement("div")
+
+        var img=document.createElement("img")
+        img.src=ele.image
+
+        var nam=document.createElement("p")
+        nam.innerText=ele.name
+
+        var pr=document.createElement("p")
+        pr.innerText=ele.price
+
+        var btn=document.createElement("button")
+        btn.innerText="Remove"
+        btn.addEventListener("click",function(){
+        //    console.log(ele,index);
+        taken.splice(index,1)
+        localStorage.setItem("data",JSON.stringify(taken))
+        window.location.reload();
+        })
+
+      div.append(img,nam,pr,btn)
+
+      document.querySelector("#con").append(div)
+    })
+
+
+</script>

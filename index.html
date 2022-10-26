@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button><a href="inventory.html">Show product</a></button>
+    <form>
+        <input id="one" type="text" placeholder="brand"/>
+        <input id="two" type="text" placeholder="name of product"/>
+        <input id="three" type="number" placeholder="price"/>
+        <input id="four" type="image url" placeholder="image url"/>
+    </form>
+    <button id="submit" onclick="run()">submit</button>
+    
+</body>
+</html>
+<script>
+
+    var arr=[]
+    function run(){
+       event.preventDefault();
+
+        var obj={
+            Brand:document.getElementById("one").value,
+            name:document.getElementById("two").value,
+            price:document.getElementById("three").value,
+            image:document.getElementById("four").value,
+        }
+
+    arr.push(obj)  
+    localStorage.setItem("data",JSON.stringify(arr));
+    }
+    
+    
+</script>
